@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Nested row for non-featured blog posts-->
+                    <div class="row">
+                            <!-- Blog post-->
+                        {%for post in categoria.post_set.all%}
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h2 class="card-title h4">{{post.titulo}}</h2>
+                                    <p class="card-text">{{post.descripcion}}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                            <!-- Blog post-->
+                    </div>
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-header">Categoriass</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        {%for cat in catgories_list%}
+                                        <li><a href="{% url 'Blog:cat_post' cat.id %}">{{cat.nombre}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
